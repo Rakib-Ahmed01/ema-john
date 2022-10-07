@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Cart from '../Cart/Cart';
-import Product from '../Product/Product';
 
 const getCartDetails = () => {
   if (!localStorage.getItem('cart')) {
@@ -99,22 +98,7 @@ const Shop = () => {
 
   return (
     <main className="flex">
-      <section
-        id="cards"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-7"
-      >
-        {products.map((product) => {
-          return (
-            <Product
-              key={Math.random()}
-              product={product}
-              cartDetails={cartDetails}
-              clearCart={clearCart}
-              addProductsToCart={addProductsToCart}
-            />
-          );
-        })}
-      </section>
+      <Outlet />
       <section className="bg-orange-300 h-screen w-[600px] sticky top-0">
         <Cart cartDetails={cartDetails} clearCart={clearCart} />
       </section>

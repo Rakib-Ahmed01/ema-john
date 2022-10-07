@@ -304,6 +304,8 @@ import Home from './components/Home/Home';
 import Shop from './components/Shop/Shop';
 import './index.css';
 import Root from './Layout/Root';
+import cartLoader from './Loaders/CartLoaders';
+import OrderReviewProducts from './OrderReviewProducts.js/OrderReviewProducts';
 
 const router = createBrowserRouter([
   {
@@ -323,6 +325,11 @@ const router = createBrowserRouter([
         path: '/shop',
         element: <Shop />,
         loader: () => fetch('products.json'),
+      },
+      {
+        path: '/order-review',
+        element: <OrderReviewProducts />,
+        loader: cartLoader,
       },
     ],
   },
